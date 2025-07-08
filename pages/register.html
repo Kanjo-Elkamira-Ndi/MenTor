@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Mentor</title>
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Left Side - Image -->
+        <div class="auth-image-side">
+            <div class="floating-elements">
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+                <div class="floating-element"></div>
+            </div>
+            <div class="auth-image-content">
+                <h2>Welcome to Mentor</h2>
+                <p>Transform your future with our comprehensive learning programs designed for success.</p>
+            </div>
+        </div>
+
+        <!-- Right Side - Register Form -->
+        <div class="auth-form-side">
+            <div class="brand-logo">MENTOR</div>
+
+            <form class="auth-form active" id="registerForm">
+                <h3 class="form-title">Register for a student profile account</h3>
+
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="Enter your phone number" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Matricule</label>
+                    <input type="text" class="form-input" placeholder="Enter your matricule" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">School of Study</label>
+                    <input type="email" class="form-input" placeholder="e.g school of computer engineering, school of mgt" required>
+                </div>
+
+                 <div class="form-group">
+                    <label class="form-label">Specialty</label>
+                    <input type="email" class="form-input" placeholder="e.g Software Engineering, Accountancy" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <div class="password-group">
+                        <input type="password" class="form-input" placeholder="Create a password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword(this)">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <div class="password-group">
+                        <input type="password" class="form-input" placeholder="Confirm your password" required>
+                        <button type="button" class="password-toggle" onclick="togglePassword(this)">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Create Account</button>
+
+                <div class="form-switch">
+                    Already have an account? <a class="switch-link" href="login.html">Login here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(button) {
+            const input = button.previousElementSibling;
+            const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+            input.setAttribute('type', type);
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Registration form submitted!');
+        });
+    </script>
+</body>
+</html>

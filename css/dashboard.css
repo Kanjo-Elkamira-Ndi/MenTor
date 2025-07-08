@@ -1,0 +1,147 @@
+.dashboard {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    background: #f8f9fa;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.sidebar ul li.active a {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.upgrade {
+    text-align: center;
+}
+
+.upgrade button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.controls select, .controls button {
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.student-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.summary, .attendance-rate, .top-students {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.attendance-rate h3 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+.monthly-rate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-students div {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .main-content {
+        padding: 10px;
+    }
+}

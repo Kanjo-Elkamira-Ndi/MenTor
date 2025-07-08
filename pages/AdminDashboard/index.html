@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenTor Admin Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h4><i class="fas fa-graduation-cap me-2"></i>MenTor Admin</h4>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="students.html">
+                        <i class="fas fa-users me-2"></i>Students
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="courses.html">
+                        <i class="fas fa-book me-2"></i>Courses
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="programs.html">
+                        <i class="fas fa-graduation-cap me-2"></i>Programs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="specialty.html">
+                        <i class="fas fa-star me-2"></i>Specialty
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="exam-results.html">
+                        <i class="fas fa-chart-line me-2"></i>Exam Results
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transcripts.html">
+                        <i class="fas fa-file-alt me-2"></i>Transcripts
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 class="page-title mb-0">Welcome to MenTor Admin</h2>
+                </div>
+                <div class="header-actions">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user me-2"></i>Admin
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content">
+            <div class="fade-in">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="text-center mb-5">
+                            <h1 class="display-4 mb-4">
+                                <i class="fas fa-graduation-cap text-primary me-3"></i>
+                                MenTor Admin Dashboard
+                            </h1>
+                            <p class="lead text-muted">
+                                Comprehensive management system for educational institutions
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-tachometer-alt fa-3x text-primary"></i>
+                                        </div>
+                                        <h5 class="card-title">Dashboard</h5>
+                                        <p class="card-text text-muted">View comprehensive statistics and recent activities</p>
+                                        <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-users fa-3x text-success"></i>
+                                        </div>
+                                        <h5 class="card-title">Students</h5>
+                                        <p class="card-text text-muted">Manage student records and information</p>
+                                        <a href="students.html" class="btn btn-success">Manage Students</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-book fa-3x text-info"></i>
+                                        </div>
+                                        <h5 class="card-title">Courses</h5>
+                                        <p class="card-text text-muted">Manage course catalog and curriculum</p>
+                                        <a href="courses.html" class="btn btn-info">Manage Courses</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-graduation-cap fa-3x text-warning"></i>
+                                        </div>
+                                        <h5 class="card-title">Programs</h5>
+                                        <p class="card-text text-muted">Manage academic programs and degrees</p>
+                                        <a href="programs.html" class="btn btn-warning">Manage Programs</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-star fa-3x text-purple"></i>
+                                        </div>
+                                        <h5 class="card-title">Specialties</h5>
+                                        <p class="card-text text-muted">Manage academic specializations</p>
+                                        <a href="specialty.html" class="btn btn-outline-primary">Manage Specialties</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100 border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-chart-line fa-3x text-danger"></i>
+                                        </div>
+                                        <h5 class="card-title">Exam Results</h5>
+                                        <p class="card-text text-muted">Track and manage examination results</p>
+                                        <a href="exam-results.html" class="btn btn-danger">View Results</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body text-center p-4">
+                                        <div class="mb-3">
+                                            <i class="fas fa-file-alt fa-3x text-secondary"></i>
+                                        </div>
+                                        <h5 class="card-title">Transcripts</h5>
+                                        <p class="card-text text-muted">Manage student academic transcripts and records</p>
+                                        <a href="transcripts.html" class="btn btn-secondary">Manage Transcripts</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>
+

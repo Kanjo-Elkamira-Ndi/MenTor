@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MenTor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 40px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="20" r="3" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="60" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="20" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .login-left h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .login-left p {
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .demo-credentials {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .demo-credentials h6 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .login-right {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .role-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: 2px solid #e9ecef;
+            background: white;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .role-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .role-btn:hover {
+            border-color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #34495e;
+        }
+
+        .login-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+                height: auto;
+                margin: 20px;
+            }
+
+            .login-left {
+                padding: 30px 20px;
+            }
+
+            .login-left h1 {
+                font-size: 2rem;
+            }
+
+            .demo-credentials {
+                position: static;
+                margin-top: 20px;
+            }
+
+            .login-right {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div>
+                <h1>Welcome to MenTor</h1>
+                <p>Transform your future with our comprehensive learning programs designed for success.</p>
+            </div>
+            <div class="demo-credentials">
+                <h6>Demo Credentials:</h6>
+                <div><strong>Admin:</strong> Admin123 / password</div>
+                <div><strong>Student:</strong> Register via admin first</div>
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="login-header">
+                <h2>MENTOR</h2>
+                <p>Login to your account</p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Login as</label>
+                    <div class="role-selector">
+                        <div class="role-btn" data-role="student">Student</div>
+                        <div class="role-btn active" data-role="admin">Admin</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" id="emailLabel">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <i class="fas fa-eye password-toggle" id="passwordToggle"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let selectedRole = 'admin';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Role selector functionality
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const emailLabel = document.getElementById('emailLabel');
+            const emailInput = document.getElementById('email');
+
+            roleButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    roleButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedRole = this.dataset.role;
+
+                    // Update form labels based on role
+                    if (selectedRole === 'student') {
+                        emailLabel.textContent = 'Matricule Number';
+                        emailInput.placeholder = 'Enter your matricule number';
+                    } else {
+                        emailLabel.textContent = 'Email';
+                        emailInput.placeholder = 'Enter your email';
+                    }
+                });
+            });
+
+            // Password toggle functionality
+            const passwordToggle = document.getElementById('passwordToggle');
+            const passwordInput = document.getElementById('password');
+
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+
+            // Form submission
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = document.getElementById('loginBtn');
+
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                if (!email || !password) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                loginBtn.disabled = true;
+                loginBtn.textContent = 'Signing In...';
+
+                try {
+                    const response = await fetch('../auth/login.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password,
+                            role: selectedRole
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Redirect based on role
+                        if (data.user_role === 'admin') {
+                            window.location.href = 'AdminDashboard/dashboard.html';
+                        } else if (data.user_role === 'student') {
+                            window.location.href = 'student dashboard/dashboard.html';
+                        }
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    alert('An error occurred during login. Please try again.');
+                } finally {
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Sign In';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

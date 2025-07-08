@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Landing Page</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+    <nav class="navbar">
+    <div class="logo">Mentor</div>
+    
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Departments</a></li>
+        <li><a href="#">Programs</a></li>
+    </ul>
+
+    <div class="nav-buttons">
+        <button class="btn btn-login"><a href="pages/login.html">Login</a></button>
+        <button class="btn btn-register"><a href="pages/register.html">Register</a></button>
+    </div>
+    </nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Inspiring Excellence <br>Through Education</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget lacus id tortor facilisis tincidunt. Donec gravida risus at sollicitudin luctus.</p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Start Your Journey</button>
+        <button class="btn btn-secondary">Virtual Tour</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <img src="assets/images/landing page.jpg" alt="Campus">
+      <div class="badge">Accredited Excellence</div>
+    </div>
+  </section>
+
+  <div class="courses-section">
+        <div class="section-header">
+            <h5 class="section-title">Explore Our Programs</h5>
+            <button class="view-all-btn">View All Courses</button>
+        </div>
+
+        <div class="courses-grid">
+            <!-- Course Card 1 -->
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" alt="Web Development" class="course-image">
+                <div class="course-content">
+                    <span class="course-category">Web Development</span>
+                    <span class="course-price">169000 XAF</span>
+                    <h3 class="course-title">Website Design</h3>
+                    <p class="course-description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                    <div class="course-instructor">
+                        <div class="instructor-info">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Antonio" class="instructor-avatar">
+                            <span class="instructor-name">Antonio</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span>50</span>
+                            </div>
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>65</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 2 -->
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop" alt="SEO Analytics" class="course-image">
+                <div class="course-content">
+                    <span class="course-category">Marketing</span>
+                    <span class="course-price">250000 XAF</span>
+                    <h3 class="course-title">Search Engine Optimization</h3>
+                    <p class="course-description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                    <div class="course-instructor">
+                        <div class="instructor-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="Lana" class="instructor-avatar">
+                            <span class="instructor-name">Lana</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span>35</span>
+                            </div>
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>42</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Card 3 -->
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=200&fit=crop" alt="Copywriting" class="course-image">
+                <div class="course-content">
+                    <span class="course-category">Content</span>
+                    <span class="course-price">180000 XAF</span>
+                    <h3 class="course-title">Copywriting</h3>
+                    <p class="course-description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
+                    <div class="course-instructor">
+                        <div class="instructor-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Brandon" class="instructor-avatar">
+                            <span class="instructor-name">Brandon</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span>20</span>
+                            </div>
+                            <div class="stat-item">
+                                <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6-828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>85</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+
+   <div class="admission-section">
+        <div class="admission-container">
+            <!-- Left Side - Image with Overlay -->
+            <div class="admission-image-side">
+                <img src="assets/images/image.webp" alt="Students in classroom" class="admission-image">
+                <div class="admission-overlay">
+                    <h2 class="admission-title">Admission Requirements</h2>
+                    <p class="admission-subtitle">
+                        Join our learning community and take the next step in your professional journey. 
+                        Review our admission requirements to ensure you're ready to start your program.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Side - Accordion -->
+            <div class="admission-accordion-side">
+                <div class="accordion">
+                    <!-- Accordion Item 1 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Educational Background</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Minimum educational requirements for program admission:</p>
+                                <ul>
+                                    <li>High school diploma or equivalent (GED)</li>
+                                    <li>Official transcripts from all previously attended institutions</li>
+                                    <li>Minimum GPA of 2.5 on a 4.0 scale</li>
+                                    <li>English proficiency test scores (if applicable)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 2 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Application Documents</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Required documents for your application:</p>
+                                <ul>
+                                    <li>Completed online application form</li>
+                                    <li>Personal statement or essay (500-750 words)</li>
+                                    <li>Resume or CV highlighting relevant experience</li>
+                                    <li>Two letters of recommendation</li>
+                                    <li>Government-issued photo ID copy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 3 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Technical Requirements</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Technical specifications for online learning:</p>
+                                <ul>
+                                    <li>Reliable internet connection (minimum 10 Mbps)</li>
+                                    <li>Computer or laptop with webcam and microphone</li>
+                                    <li>Updated web browser (Chrome, Firefox, Safari, Edge)</li>
+                                    <li>Basic computer literacy and navigation skills</li>
+                                    <li>Access to required software (provided during enrollment)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 4 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Prerequisites & Experience</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Course-specific prerequisites and recommended experience:</p>
+                                <ul>
+                                    <li>Basic understanding of computers and internet usage</li>
+                                    <li>Willingness to learn and adapt to new technologies</li>
+                                    <li>Time commitment of 10-15 hours per week</li>
+                                    <li>Previous work experience preferred but not required</li>
+                                    <li>Completion of placement assessment (if applicable)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 5 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Financial Requirements</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Financial obligations and payment options:</p>
+                                <ul>
+                                    <li>Tuition payment or approved payment plan</li>
+                                    <li>Registration fee (non-refundable)</li>
+                                    <li>Financial aid documentation (if applicable)</li>
+                                    <li>Scholarship application materials</li>
+                                    <li>Employer sponsorship forms (if applicable)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item 6 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                            <span>Application Deadlines</span>
+                            <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                <p>Important dates and timeline for applications:</p>
+                                <ul>
+                                    <li>Early admission deadline: December 1st</li>
+                                    <li>Regular admission deadline: February 15th</li>
+                                    <li>Late admission deadline: April 30th (if space available)</li>
+                                    <li>International student deadline: January 15th</li>
+                                    <li>Financial aid priority deadline: March 1st</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="brand-logo">MENTOR</div>
+                <p class="brand-description">
+                    Empowering learners worldwide with cutting-edge courses and expert instruction. 
+                    Join thousands of students who have transformed their careers through our comprehensive programs.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#trainers">Trainers</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+
+            <!-- Programs -->
+            <div class="footer-section">
+                <h4>Programs</h4>
+                <ul class="footer-links">
+                    <li><a href="#web-dev">Web Development</a></li>
+                    <li><a href="#digital-marketing">Digital Marketing</a></li>
+                    <li><a href="#data-science">Data Science</a></li>
+                    <li><a href="#ui-ux">UI/UX Design</a></li>
+                    <li><a href="#mobile-dev">Mobile Development</a></li>
+                    <li><a href="#cybersecurity">Cybersecurity</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul class="contact-info">
+                    <li class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>123 Education Street<br>Learning City, LC 12345</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                        </svg>
+                        <span>+1 (555) 123-4567</span>
+                    </li>
+                    <li class="contact-item">
+                        <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                        </svg>
+                        <span>info@mentor.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-section newsletter">
+                <h4>Stay Updated</h4>
+                <p class="newsletter-description">
+                    Subscribe to our newsletter for the latest course updates, industry insights, and exclusive offers.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    &copy; 2025 Mentor. All rights reserved.
+                </div>
+                <ul class="footer-bottom-links">
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms of Service</a></li>
+                    <li><a href="#cookies">Cookie Policy</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+<script>
+    function toggleAccordion(button) {
+        const accordionContent = button.nextElementSibling;
+        const allHeaders = document.querySelectorAll('.accordion-header');
+        const allContents = document.querySelectorAll('.accordion-content');
+        
+        // Close all other accordions
+        allHeaders.forEach(header => {
+            if (header !== button) {
+                header.classList.remove('active');
+            }
+        });
+        
+        allContents.forEach(content => {
+            if (content !== accordionContent) {
+                content.classList.remove('active');
+            }
+        });
+        
+        // Toggle current accordion
+        button.classList.toggle('active');
+        accordionContent.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
