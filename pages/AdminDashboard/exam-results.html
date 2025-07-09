@@ -101,8 +101,8 @@
                             <input type="text" class="form-control" id="gradeSearch" placeholder="Search results...">
                         </div>
                         <div class="col-md-3">
-                            <select class="form-select" id="enrollmentFilter">
-                                <option value="">All Enrollments</option>
+                            <select class="form-select" id="courseFilter">
+                                <option value="">All Courses</option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -150,9 +150,15 @@
                     <form id="gradeForm">
                         <input type="hidden" id="gradeId">
                         <div class="mb-3">
-                            <label for="enrollmentId" class="form-label">Student - Course *</label>
-                            <select class="form-select" id="enrollmentId" required>
-                                <option value="">Select Enrollment</option>
+                            <label for="studentId" class="form-label">Student *</label>
+                            <select class="form-select" id="studentId" required>
+                                <option value="">Select Student</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="courseId" class="form-label">Course *</label>
+                            <select class="form-select" id="courseId" required>
+                                <option value="">Select Course</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -218,7 +224,8 @@
     <!-- Custom JS -->
     <script>
         let grades = [];
-        let enrollments = [];
+        let courses = [];
+        let students = [];
         let currentGradeId = null;
         const gradeModal = new bootstrap.Modal(document.getElementById("gradeModal"));
         const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
@@ -228,7 +235,7 @@
             document.getElementById("saveGradeBtn").addEventListener("click", saveGrade);
             document.getElementById("confirmDeleteBtn").addEventListener("click", deleteGradeConfirmed);
             document.getElementById("gradeSearch").addEventListener("keyup", loadGrades);
-            document.getElementById("enrollmentFilter").addEventListener("change", loadGrades);
+            document.getElementById("courseFilter").addEventListener("change", loadGrades);
         });
 
         async function checkAuthAndLoadData() {
@@ -241,7 +248,8 @@
                     return;
                 }
                 document.getElementById("adminName").textContent = data.user_name;
-                await loadEnrollments();
+                await loadCourses();
+                await loadStudents();
                 loadGrades();
             } catch (error) {
                 console.error("Auth check error:", error);
@@ -249,37 +257,58 @@
             }
         }
 
-        async function loadEnrollments() {
+        async function loadCourses() {
             try {
-                const response = await fetch("../../api/admin/enrollments.php");
+                const response = await fetch("../../api/admin/courses_for_grades.php");
                 const data = await response.json();
                 if (data.success) {
-                    enrollments = data.data;
-                    const enrollmentSelect = document.getElementById("enrollmentId");
-                    const enrollmentFilter = document.getElementById("enrollmentFilter");
-                    enrollmentSelect.innerHTML = 
-                        `<option value="">Select Enrollment</option>`;
-                    enrollmentFilter.innerHTML = 
-                        `<option value="">All Enrollments</option>`;
-                    enrollments.forEach(enrollment => {
-                        enrollmentSelect.innerHTML += 
-                            `<option value="${enrollment.enrollment_id}">${enrollment.student_name} - ${enrollment.course_name}</option>`;
-                        enrollmentFilter.innerHTML += 
-                            `<option value="${enrollment.enrollment_id}">${enrollment.student_name} - ${enrollment.course_name}</option>`;
+                    courses = data.data;
+                    const courseSelect = document.getElementById("courseId");
+                    const courseFilter = document.getElementById("courseFilter");
+                    courseSelect.innerHTML = 
+                        `<option value="">Select Course</option>`;
+                    courseFilter.innerHTML = 
+                        `<option value="">All Courses</option>`;
+                    courses.forEach(course => {
+                        courseSelect.innerHTML += 
+                            `<option value="${course.id}">${course.name} (${course.course_code})</option>`;
+                        courseFilter.innerHTML += 
+                            `<option value="${course.id}">${course.name} (${course.course_code})</option>`;
                     });
                 } else {
-                    console.error("Failed to load enrollments:", data.message);
+                    console.error("Failed to load courses:", data.message);
                 }
             } catch (error) {
-                console.error("Error loading enrollments:", error);
+                console.error("Error loading courses:", error);
+            }
+        }
+
+        async function loadStudents() {
+            try {
+                const response = await fetch("../../api/admin/students_for_grades.php");
+                const data = await response.json();
+                if (data.success) {
+                    students = data.data;
+                    const studentSelect = document.getElementById("studentId");
+                    studentSelect.innerHTML = 
+                        `<option value="">Select Student</option>`;
+                    students.forEach(student => {
+                        studentSelect.innerHTML += 
+                            `<option value="${student.id}">${student.full_name} (${student.email})</option>`;
+                    });
+                } else {
+                    console.error("Failed to load students:", data.message);
+                }
+            } catch (error) {
+                console.error("Error loading students:", error);
             }
         }
 
         async function loadGrades() {
             try {
                 const searchQuery = document.getElementById("gradeSearch").value;
-                const enrollmentFilter = document.getElementById("enrollmentFilter").value;
-                let url = `../../api/admin/grades.php?search=${searchQuery}&enrollment_id=${enrollmentFilter}`;
+                const courseFilter = document.getElementById("courseFilter").value;
+                let url = `../../api/admin/grades.php?search=${searchQuery}&course_id=${courseFilter}`;
                 
                 const response = await fetch(url);
                 const data = await response.json();
@@ -306,19 +335,25 @@
             }
             gradesToDisplay.forEach(grade => {
                 const row = tableBody.insertRow();
-                const scoreBadgeClass = grade.score >= (grade.total_score * 0.5) ? "bg-success" : "bg-danger"; // Assuming 50% is passing
+                // Ensure we have fallback values for undefined fields
+                const gradeType = grade.grade_type || grade.assessment_type || 'N/A';
+                const totalScore = grade.total_score || 100;
+                const gradeDate = grade.grade_date || new Date().toISOString().split('T')[0];
+                const score = grade.score || 0;
+                
+                const scoreBadgeClass = score >= (totalScore * 0.5) ? "bg-success" : "bg-danger";
                 row.innerHTML = `
-                    <td>${grade.student_name}</td>
-                    <td>${grade.course_name}</td>
-                    <td>${grade.grade_type}</td>
-                    <td><span class="badge ${scoreBadgeClass}">${grade.score}/${grade.total_score}</span></td>
-                    <td>${grade.grade_date}</td>
+                    <td>${grade.student_name || 'N/A'}</td>
+                    <td>${grade.course_name || 'N/A'}</td>
+                    <td>${gradeType}</td>
+                    <td><span class="badge ${scoreBadgeClass}">${score}/${totalScore}</span></td>
+                    <td>${gradeDate}</td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn btn-sm btn-outline-primary" onclick="editGrade(${grade.grade_id})">
+                            <button class="btn btn-sm btn-outline-primary" onclick="editGrade(${grade.grade_id || grade.id})">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-sm btn-outline-danger" onclick="confirmDeleteGrade(${grade.grade_id}, '${grade.student_name} - ${grade.course_name} (${grade.grade_type})')">
+                            <button class="btn btn-sm btn-outline-danger" onclick="confirmDeleteGrade(${grade.grade_id || grade.id}, '${grade.student_name} - ${grade.course_name} (${gradeType})')">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -328,24 +363,26 @@
         }
 
         function showGradeModal(grade = {}) {
-            currentGradeId = grade.grade_id || null;
+            currentGradeId = grade.grade_id || grade.id || null;
             document.getElementById("gradeModalTitle").textContent = currentGradeId ? "Edit Exam Result" : "Add Exam Result";
-            document.getElementById("enrollmentId").value = grade.enrollment_id || "";
-            document.getElementById("gradeType").value = grade.grade_type || "";
+            document.getElementById("studentId").value = grade.student_id || "";
+            document.getElementById("courseId").value = grade.course_id || "";
+            document.getElementById("gradeType").value = grade.grade_type || grade.assessment_type || "";
             document.getElementById("score").value = grade.score || "";
-            document.getElementById("totalScore").value = grade.total_score || "";
-            document.getElementById("gradeDate").value = grade.grade_date || "";
+            document.getElementById("totalScore").value = grade.total_score || 100;
+            document.getElementById("gradeDate").value = grade.grade_date || new Date().toISOString().split('T')[0];
             gradeModal.show();
         }
 
         async function saveGrade() {
-            const enrollmentId = document.getElementById("enrollmentId").value;
+            const studentId = document.getElementById("studentId").value;
+            const courseId = document.getElementById("courseId").value;
             const gradeType = document.getElementById("gradeType").value;
             const score = document.getElementById("score").value;
             const totalScore = document.getElementById("totalScore").value;
             const gradeDate = document.getElementById("gradeDate").value;
 
-            if (!enrollmentId || !gradeType || !score || !totalScore || !gradeDate) {
+            if (!studentId || !courseId || !gradeType || !score || !totalScore || !gradeDate) {
                 alert("Please fill in all required fields.");
                 return;
             }
@@ -354,7 +391,8 @@
             const url = `../../api/admin/grades.php${currentGradeId ? `?grade_id=${currentGradeId}` : ''}`;
             
             const body = {
-                enrollment_id: enrollmentId,
+                course_id: courseId,
+                student_id: studentId,
                 grade_type: gradeType,
                 score: score,
                 total_score: totalScore,
@@ -385,7 +423,7 @@
         }
 
         function editGrade(gradeId) {
-            const grade = grades.find(g => g.grade_id === gradeId);
+            const grade = grades.find(g => (g.grade_id || g.id) === gradeId);
             if (grade) {
                 showGradeModal(grade);
             }
@@ -469,4 +507,3 @@
     </script>
 </body>
 </html>
-

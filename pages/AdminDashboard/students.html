@@ -55,6 +55,11 @@
                         <i class="fas fa-file-alt me-2"></i>Transcripts
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="schools.html">
+                        <i class="fas fa-university me-2"></i>Schools
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
@@ -273,9 +278,9 @@
                         `<option value="">All Specialties</option>`;
                     specialties.forEach(specialty => {
                         specialtySelect.innerHTML += 
-                            `<option value="${specialty.specialty_id}">${specialty.specialty_name}</option>`;
+                            `<option value="${specialty.id}">${specialty.name}</option>`;
                         specialtyFilter.innerHTML += 
-                            `<option value="${specialty.specialty_id}">${specialty.specialty_name}</option>`;
+                            `<option value="${specialty.id}">${specialty.name}</option>`;
                     });
                 } else {
                     console.error("Failed to load specialties:", data.message);
@@ -315,13 +320,25 @@
                 return;
             }
             studentsToDisplay.forEach(student => {
+                // Find the specialty name from our specialties array
+                let specialtyName = 'N/A';
+                if (student.specialty_id) {
+                    const specialty = specialties.find(s => s.id == student.specialty_id);
+                    if (specialty) {
+                        specialtyName = specialty.name;
+                    }
+                }
+                
+                // Use specialty_name from API if available, otherwise use our lookup
+                const displaySpecialty = student.specialty_name || specialtyName;
+                
                 const row = tableBody.insertRow();
                 row.innerHTML = `
                     <td><strong>${student.matricule_number}</strong></td>
                     <td>${student.full_name}</td>
                     <td>${student.email}</td>
-                    <td>${student.phone_number}</td>
-                    <td>${student.specialty_name || 'N/A'}</td>
+                    <td>${student.phone_number || ''}</td>
+                    <td>${displaySpecialty}</td>
                     <td>
                         <div class="action-buttons">
                             <button class="btn btn-sm btn-outline-primary" onclick="editStudent(${student.student_id})">
@@ -350,33 +367,47 @@
         }
 
         async function saveStudent() {
-            const matriculeNumber = document.getElementById("matriculeNumber").value;
-            const fullName = document.getElementById("fullName").value;
-            const email = document.getElementById("email").value;
-            const phoneNumber = document.getElementById("phoneNumber").value;
+            const matriculeNumber = document.getElementById("matriculeNumber").value.trim();
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phoneNumber = document.getElementById("phoneNumber").value.trim();
             const specialtyId = document.getElementById("specialtyId").value;
             const password = document.getElementById("password").value;
 
+            // Validation
             if (!matriculeNumber || !fullName || !email || !phoneNumber) {
                 alert("Please fill in all required fields.");
                 return;
             }
 
-            const method = currentStudentId ? "PUT" : "POST";
-            const url = `../../api/admin/students.php${currentStudentId ? `?student_id=${currentStudentId}` : ''}`;
-            
+            // Prepare request data
             const body = {
                 matricule_number: matriculeNumber,
                 full_name: fullName,
                 email: email,
-                phone_number: phoneNumber,
-                specialty_id: specialtyId || null
+                phone_number: phoneNumber
             };
+
+            // Only include specialty_id if it's not empty
+            if (specialtyId) {
+                body.specialty_id = specialtyId;
+            }
+
+            // Only include password if it's not empty
             if (password) {
                 body.password = password;
             }
 
+            // Determine if we're creating or updating
+            const isUpdate = !!currentStudentId;
+            const url = `../../api/admin/students.php${isUpdate ? `?id=${currentStudentId}` : ''}`;
+            const method = isUpdate ? 'PUT' : 'POST';
+
             try {
+                console.log("Sending request to:", url);
+                console.log("Method:", method);
+                console.log("Request body:", body);
+
                 const response = await fetch(url, {
                     method: method,
                     headers: {
@@ -384,18 +415,33 @@
                     },
                     body: JSON.stringify(body)
                 });
-                const data = await response.json();
+
+                const responseText = await response.text();
+                console.log("Raw response:", responseText);
+
+                let data;
+                try {
+                    data = responseText ? JSON.parse(responseText) : null;
+                } catch (e) {
+                    console.error("Failed to parse JSON:", e);
+                    throw new Error("Invalid server response");
+                }
+
+                if (!response.ok) {
+                    console.error("Server error:", data);
+                    throw new Error(data?.message || `Server returned status ${response.status}`);
+                }
 
                 if (data.success) {
-                    alert(data.message);
+                    alert(`Student ${isUpdate ? 'updated' : 'created'} successfully!`);
                     studentModal.hide();
                     loadStudents();
                 } else {
-                    alert("Error: " + data.message);
+                    throw new Error(data.message || 'Operation failed');
                 }
             } catch (error) {
-                console.error("Error saving student:", error);
-                alert("An error occurred while saving the student.");
+                console.error("Full error details:", error);
+                alert(`Error: ${error.message}\nCheck console for details.`);
             }
         }
 
@@ -414,7 +460,7 @@
 
         async function deleteStudentConfirmed() {
             try {
-                const response = await fetch(`../../api/admin/students.php?student_id=${currentStudentId}`, {
+                const response = await fetch(`../../api/admin/students.php?id=${currentStudentId}`, {
                     method: "DELETE"
                 });
                 const data = await response.json();
