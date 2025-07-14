@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>College Landing Page</title>
+  <title>MenTor Landing Page</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -30,9 +30,7 @@
         <span></span>
         <span></span>
     </button>
-    </nav>
-     <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    </nav>    
 
     <!-- Mobile Navigation Menu -->
     <div class="mobile-nav" id="mobileNav">
@@ -433,33 +431,33 @@
             </div>
         </div>
     </footer>
-
+<script src="js/script.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     // Mobile Navigation Toggle
-    const mobileToggle = document.getElementById("mobileMenuToggle");
-    const mobileNav = document.getElementById("mobileNav");
-    const overlay = document.getElementById("mobileNavOverlay");
+    // const mobileToggle = document.getElementById("mobileMenuToggle");
+    // const mobileNav = document.getElementById("mobileNav");
+    // const overlay = document.getElementById("mobileNavOverlay");
 
-    if (mobileToggle && mobileNav && overlay) {
-        mobileToggle.addEventListener("click", function () {
-            // Toggle mobile menu and overlay
-            mobileNav.classList.toggle("active");
-            overlay.classList.toggle("active");
-            mobileToggle.classList.toggle("active");
+    // if (mobileToggle && mobileNav && overlay) {
+    //     mobileToggle.addEventListener("click", function () {
+    //         // Toggle mobile menu and overlay
+    //         mobileNav.classList.toggle("active");
+    //         overlay.classList.toggle("active");
+    //         mobileToggle.classList.toggle("active");
             
-            // Prevent scrolling when mobile menu is open
-            document.body.style.overflow = mobileNav.classList.contains("active") ? "hidden" : "auto";
-        });
+    //         // Prevent scrolling when mobile menu is open
+    //         document.body.style.overflow = mobileNav.classList.contains("active") ? "hidden" : "auto";
+    //     });
 
-        overlay.addEventListener("click", function () {
-            // Close mobile menu when overlay is clicked
-            mobileNav.classList.remove("active");
-            overlay.classList.remove("active");
-            mobileToggle.classList.remove("active");
-            document.body.style.overflow = "auto";
-        });
-    }
+    //     overlay.addEventListener("click", function () {
+    //         // Close mobile menu when overlay is clicked
+    //         mobileNav.classList.remove("active");
+    //         overlay.classList.remove("active");
+    //         mobileToggle.classList.remove("active");
+    //         document.body.style.overflow = "auto";
+    //     });
+    // }
 
     // Accordion Toggle (unchanged)
     const headers = document.querySelectorAll(".accordion-header");
