@@ -12,6 +12,7 @@
     <nav class="navbar">
     <div class="logo">Mentor</div>
     
+    <!-- Desktop Navigation -->
     <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="#">Departments</a></li>
@@ -22,7 +23,29 @@
         <button class="btn btn-login"><a href="pages/login.html">Login</a></button>
         <button class="btn btn-register"><a href="pages/register.html">Register</a></button>
     </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
     </nav>
+     <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Departments</a></li>
+            <li><a href="#">Programs</a></li>
+        </ul>
+        <div class="mobile-nav-buttons">
+            <button class="btn btn-login"><a href="pages/login.html">Login</a></button>
+            <button class="btn btn-register"><a href="pages/register.html">Register</a></button>
+        </div>
+    </div>
 
 
   <!-- Hero Section -->
@@ -134,7 +157,7 @@
                             </div>
                             <div class="stat-item">
                                 <svg class="stat-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6-828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
                                 </svg>
                                 <span>85</span>
                             </div>
@@ -164,7 +187,7 @@
                 <div class="accordion">
                     <!-- Accordion Item 1 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Educational Background</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -185,7 +208,7 @@
 
                     <!-- Accordion Item 2 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Application Documents</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -207,7 +230,7 @@
 
                     <!-- Accordion Item 3 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Technical Requirements</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -229,7 +252,7 @@
 
                     <!-- Accordion Item 4 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Prerequisites & Experience</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -251,7 +274,7 @@
 
                     <!-- Accordion Item 5 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Financial Requirements</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -273,7 +296,7 @@
 
                     <!-- Accordion Item 6 -->
                     <div class="accordion-item">
-                        <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <button class="accordion-header">
                             <span>Application Deadlines</span>
                             <svg class="accordion-icon" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
@@ -335,7 +358,7 @@
                 <h4>Quick Links</h4>
                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
+                    <li><a href="pages/login.html">Login</a></li>
                     <li><a href="#courses">Courses</a></li>
                     <li><a href="#trainers">Trainers</a></li>
                     <li><a href="#events">Events</a></li>
@@ -347,12 +370,12 @@
             <div class="footer-section">
                 <h4>Programs</h4>
                 <ul class="footer-links">
-                    <li><a href="#web-dev">Web Development</a></li>
-                    <li><a href="#digital-marketing">Digital Marketing</a></li>
-                    <li><a href="#data-science">Data Science</a></li>
-                    <li><a href="#ui-ux">UI/UX Design</a></li>
-                    <li><a href="#mobile-dev">Mobile Development</a></li>
-                    <li><a href="#cybersecurity">Cybersecurity</a></li>
+                    <li><a href="#web-dev">SWE</a></li>
+                    <li><a href="#digital-marketing">NWS</a></li>
+                    <li><a href="#data-science">CSN</a></li>
+                    <li><a href="#ui-ux">EDM</a></li>
+                    <li><a href="#mobile-dev">CWD</a></li>
+                    <li><a href="#cybersecurity">PRM</a></li>
                 </ul>
             </div>
 
@@ -364,13 +387,13 @@
                         <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                         </svg>
-                        <span>123 Education Street<br>Learning City, LC 12345</span>
+                        <span>Simbock<br>Yaounde</span>
                     </li>
                     <li class="contact-item">
                         <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
                         </svg>
-                        <span>+1 (555) 123-4567</span>
+                        <span>+237 679403530</span>
                     </li>
                     <li class="contact-item">
                         <svg class="contact-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -410,29 +433,58 @@
             </div>
         </div>
     </footer>
+
 <script>
-    function toggleAccordion(button) {
-        const accordionContent = button.nextElementSibling;
-        const allHeaders = document.querySelectorAll('.accordion-header');
-        const allContents = document.querySelectorAll('.accordion-content');
-        
-        // Close all other accordions
-        allHeaders.forEach(header => {
-            if (header !== button) {
-                header.classList.remove('active');
-            }
+    document.addEventListener("DOMContentLoaded", function () {
+    // Mobile Navigation Toggle
+    const mobileToggle = document.getElementById("mobileMenuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+    const overlay = document.getElementById("mobileNavOverlay");
+
+    if (mobileToggle && mobileNav && overlay) {
+        mobileToggle.addEventListener("click", function () {
+            // Toggle mobile menu and overlay
+            mobileNav.classList.toggle("active");
+            overlay.classList.toggle("active");
+            mobileToggle.classList.toggle("active");
+            
+            // Prevent scrolling when mobile menu is open
+            document.body.style.overflow = mobileNav.classList.contains("active") ? "hidden" : "auto";
         });
-        
-        allContents.forEach(content => {
-            if (content !== accordionContent) {
-                content.classList.remove('active');
-            }
+
+        overlay.addEventListener("click", function () {
+            // Close mobile menu when overlay is clicked
+            mobileNav.classList.remove("active");
+            overlay.classList.remove("active");
+            mobileToggle.classList.remove("active");
+            document.body.style.overflow = "auto";
         });
-        
-        // Toggle current accordion
-        button.classList.toggle('active');
-        accordionContent.classList.toggle('active');
     }
+
+    // Accordion Toggle (unchanged)
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+        header.addEventListener("click", () => {
+            const item = header.closest(".accordion-item");
+            const content = item.querySelector(".accordion-content");
+
+            const isOpen = item.classList.contains("active");
+
+            // Close all accordion items
+            document.querySelectorAll(".accordion-item").forEach(i => {
+                i.classList.remove("active");
+                i.querySelector(".accordion-content").style.maxHeight = null;
+            });
+
+            // Open clicked item if it was closed
+            if (!isOpen) {
+                item.classList.add("active");
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+});
 </script>
 
 </body>

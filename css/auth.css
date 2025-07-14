@@ -30,7 +30,7 @@ body {
 .auth-image-side {
     position: relative;
     background: linear-gradient(135deg, rgba(10, 35, 66, 0.8), rgba(13, 42, 74, 0.9)), 
-                url('../assets/images/us.jpg') center/cover;
+                url('./assets/images/us.jpg') center/cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +40,7 @@ body {
     padding: 40px;
 }
 
-.auth-image-content h2 {
+.auth-image-content h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 20px;

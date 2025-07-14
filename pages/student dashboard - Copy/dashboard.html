@@ -12,17 +12,10 @@
     <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-left">
-            <div class="logo" style="margin-top: 10px;">
+            <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
                 <span class="logo-text">MenTor</span>
             </div>
-            <div class="mobile-menu-icon">
-                <i class="fas fa-bars"></i>
-            </div>
-            <!-- <div class="logo">
-                <i class="fas fa-graduation-cap"></i>
-                <span class="logo-text">MenTor</span>
-            </div> -->
         </div>
         
         <div class="navbar-center">
@@ -108,7 +101,7 @@
             <!-- Welcome Section -->
             <div class="welcome-section">
                 <h1 class="welcome-title" id="welcomeTitle">Welcome back, Alchemy!</h1>
-                <p class="welcome-subtitle">Here\'s your academic overview</p>
+                <p class="welcome-subtitle">Here's your academic overview</p>
             </div>
 
             <!-- Stats Cards -->
@@ -174,7 +167,7 @@
         async function checkAuth() {
             try {
                 console.log("Checking authentication...");
-                const response = await fetch("../../auth/check_session.php");
+                const response = await fetch('../../auth/check_session.php');
                 const responseText = await response.text();
                 console.log("Auth response:", responseText);
                 
@@ -183,25 +176,25 @@
                     data = JSON.parse(responseText);
                 } catch (e) {
                     console.error("Failed to parse auth response:", e);
-                    window.location.href = "../login.html";
+                    window.location.href = '../login.html';
                     return;
                 }
                 
-                if (!data.logged_in || data.user_role !== "student") {
+                if (!data.logged_in || data.user_role !== 'student') {
                     console.error("Not authenticated as student:", data);
-                    window.location.href = "../login.html";
+                    window.location.href = '../login.html';
                     return;
                 }
                 
                 // Update user name in UI
-                document.getElementById("userName").textContent = data.user_name;
-                document.getElementById("welcomeTitle").textContent = `Welcome back, ${data.user_name}!`;
+                document.getElementById('userName').textContent = data.user_name;
+                document.getElementById('welcomeTitle').textContent = `Welcome back, ${data.user_name}!`;
                 
                 // Load dashboard data
                 loadDashboardData();
             } catch (error) {
-                console.error("Auth check error:", error);
-                window.location.href = "../login.html";
+                console.error('Auth check error:', error);
+                window.location.href = '../login.html';
             }
         }
 
@@ -209,7 +202,7 @@
         async function loadDashboardData() {
             try {
                 console.log("Loading dashboard data...");
-                const response = await fetch("../../api/student/dashboard.php");
+                const response = await fetch('../../api/student/dashboard.php');
                 const responseText = await response.text();
                 console.log("Dashboard response:", responseText);
                 
@@ -225,36 +218,36 @@
                     console.log("Dashboard data loaded successfully:", data.data);
                     updateDashboardUI(data.data);
                 } else {
-                    console.error("Failed to load dashboard data:", data.message);
+                    console.error('Failed to load dashboard data:', data.message);
                     // Show fallback data
                     updateDashboardUI({
                         enrolled_courses: 5,
                         current_gpa: 3.8,
                         recent_grades: 12,
-                        account_status: "Active",
+                        account_status: 'Active',
                         performance_data: [
-                            {course: "Mathematics", score: 85},
-                            {course: "Physics", score: 78},
-                            {course: "Chemistry", score: 92},
-                            {course: "Biology", score: 88},
-                            {course: "Computer Science", score: 95}
+                            {course: 'Mathematics', score: 85},
+                            {course: 'Physics', score: 78},
+                            {course: 'Chemistry', score: 92},
+                            {course: 'Biology', score: 88},
+                            {course: 'Computer Science', score: 95}
                         ]
                     });
                 }
             } catch (error) {
-                console.error("Dashboard data error:", error);
+                console.error('Dashboard data error:', error);
                 // Show fallback data
                 updateDashboardUI({
                     enrolled_courses: 5,
                     current_gpa: 3.8,
                     recent_grades: 12,
-                    account_status: "Active",
+                    account_status: 'Active',
                     performance_data: [
-                        {course: "Mathematics", score: 85},
-                        {course: "Physics", score: 78},
-                        {course: "Chemistry", score: 92},
-                        {course: "Biology", score: 88},
-                        {course: "Computer Science", score: 95}
+                        {course: 'Mathematics', score: 85},
+                        {course: 'Physics', score: 78},
+                        {course: 'Chemistry', score: 92},
+                        {course: 'Biology', score: 88},
+                        {course: 'Computer Science', score: 95}
                     ]
                 });
             }
@@ -265,10 +258,10 @@
             console.log("Updating dashboard UI with data:", data);
             
             // Update stats
-            document.getElementById("enrolledCourses").textContent = data.enrolled_courses || 0;
-            document.getElementById("currentGPA").textContent = data.current_gpa || 0;
-            document.getElementById("recentGrades").textContent = data.recent_grades || 0;
-            document.getElementById("accountStatus").textContent = data.account_status || "Active";
+            document.getElementById('enrolledCourses').textContent = data.enrolled_courses || 0;
+            document.getElementById('currentGPA').textContent = data.current_gpa || 0;
+            document.getElementById('recentGrades').textContent = data.recent_grades || 0;
+            document.getElementById('accountStatus').textContent = data.account_status || 'Active';
             
             // Update performance chart
             if (data.performance_data && data.performance_data.length > 0) {
@@ -276,11 +269,11 @@
             } else {
                 // Fallback data if no performance data is available
                 updatePerformanceChart([
-                    {course: "Mathematics", score: 85},
-                    {course: "Physics", score: 78},
-                    {course: "Chemistry", score: 92},
-                    {course: "Biology", score: 88},
-                    {course: "Computer Science", score: 95}
+                    {course: 'Mathematics', score: 85},
+                    {course: 'Physics', score: 78},
+                    {course: 'Chemistry', score: 92},
+                    {course: 'Biology', score: 88},
+                    {course: 'Computer Science', score: 95}
                 ]);
             }
         }
@@ -288,7 +281,7 @@
         // Update performance chart
         function updatePerformanceChart(performanceData) {
             console.log("Updating performance chart with data:", performanceData);
-            const ctx = document.getElementById("performanceChart").getContext("2d");
+            const ctx = document.getElementById('performanceChart').getContext('2d');
             
             // Destroy existing chart if it exists
             if (performanceChart) {
@@ -299,18 +292,18 @@
             const scores = performanceData.map(item => item.score);
             
             performanceChart = new Chart(ctx, {
-                type: "bar",
+                type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: "CA Scores",
+                        label: 'CA Scores',
                         data: scores,
                         backgroundColor: [
-                            "#4F46E5",
-                            "#7C3AED",
-                            "#EC4899",
-                            "#06B6D4",
-                            "#F59E0B"
+                            '#4F46E5',
+                            '#7C3AED',
+                            '#EC4899',
+                            '#06B6D4',
+                            '#F59E0B'
                         ],
                         borderRadius: 8,
                         borderSkipped: false,
@@ -329,7 +322,7 @@
                             beginAtZero: true,
                             max: 100,
                             grid: {
-                                color: "#E5E7EB"
+                                color: '#E5E7EB'
                             }
                         },
                         x: {
@@ -346,55 +339,44 @@
         async function logout() {
             try {
                 console.log("Logging out...");
-                const response = await fetch("../../auth/logout.php", {
-                    method: "POST"
+                const response = await fetch('../../auth/logout.php', {
+                    method: 'POST'
                 });
                 const data = await response.json();
                 
                 if (data.success) {
-                    window.location.href = "../login.html";
+                    window.location.href = '../login.html';
                 }
             } catch (error) {
-                console.error("Logout error:", error);
-                window.location.href = "../login.html";
+                console.error('Logout error:', error);
+                window.location.href = '../login.html';
             }
         }
 
         // Initialize dashboard
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             console.log("DOM loaded, initializing dashboard...");
             checkAuth();
             
             // Profile dropdown toggle
-            const profileTrigger = document.querySelector(".profile-trigger");
-            const dropdownMenu = document.querySelector(".dropdown-menu");
+            const profileTrigger = document.querySelector('.profile-trigger');
+            const dropdownMenu = document.querySelector('.dropdown-menu');
             
             if (profileTrigger) {
-                profileTrigger.addEventListener("click", function() {
-                    dropdownMenu.classList.toggle("show");
+                profileTrigger.addEventListener('click', function() {
+                    dropdownMenu.classList.toggle('show');
                 });
             }
             
             // Close dropdown when clicking outside
-            document.addEventListener("click", function(event) {
-                if (!event.target.closest(".profile-dropdown")) {
-                    if (dropdownMenu.classList.contains("show")) {
-                        dropdownMenu.classList.remove("show");
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.profile-dropdown')) {
+                    if (dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.classList.remove('show');
                     }
                 }
             });
-
-            // Mobile menu toggle
-            const mobileMenuIcon = document.querySelector(".mobile-menu-icon");
-            const sidebar = document.querySelector(".sidebar");
-
-            if (mobileMenuIcon) {
-                mobileMenuIcon.addEventListener("click", function() {
-                    sidebar.classList.toggle("open");
-                });
-            }
         });
     </script>
 </body>
 </html>
-

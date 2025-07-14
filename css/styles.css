@@ -21,6 +21,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  position: relative;
 }
 
 .navbar .logo {
@@ -81,6 +82,140 @@
 .btn-register a:hover {
   background-color: #007bff;
 }
+
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #0a2342;
+  margin: 3px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* Mobile Menu Toggle Animation */
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding: 80px 30px 30px;
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  margin-bottom: 30px;
+}
+
+.mobile-nav-links li {
+  margin-bottom: 20px;
+}
+
+.mobile-nav-links li a {
+  text-decoration: none;
+  color: #0a2342;
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s;
+}
+
+.mobile-nav-links li a:hover {
+  color: #007bff;
+}
+
+.mobile-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-nav-buttons .btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.mobile-nav-buttons .btn-login {
+  background-color: transparent;
+  border: 1px solid #0a2342;
+  color: #0a2342;
+}
+
+.mobile-nav-buttons .btn-login:hover {
+  background-color: #0a2342;
+  color: #fff;
+}
+
+.mobile-nav-buttons .btn-register {
+  background-color: #0a2342;
+  color: white;
+}
+
+.mobile-nav-buttons .btn-register:hover {
+  background-color: #007bff;
+}
+
     /* Hero Section */
     .hero {
       display: flex;
@@ -98,675 +233,644 @@
     }
 
     .hero-left h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #0a2342;
+      line-height: 1.2;
       margin-bottom: 20px;
     }
 
     .hero-left p {
       font-size: 1.1rem;
-      margin-bottom: 40px;
-      color: #555;
-    }
-
-    .stats {
-      display: flex;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .stat {
-      text-align: center;
-    }
-
-    .stat h2 {
-      font-size: 2rem;
-      margin-bottom: 5px;
-      color: #0a2342;
-    }
-
-    .stat p {
-      font-size: 0.9rem;
-      color: #777;
+      color: #6c757d;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 20px;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 30px;
+      padding: 12px 24px;
       font-size: 1rem;
       border-radius: 8px;
       border: none;
       cursor: pointer;
-      transition: 0.3s ease;
       font-weight: 600;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
 
     .btn-primary {
-      background-color: #0a2342;
-      color: #fff;
+      background-color: #007bff;
+      color: white;
     }
 
     .btn-primary:hover {
-      background-color: #001021;
+      background-color: #0056b3;
+      transform: translateY(-2px);
     }
 
     .btn-secondary {
-      background-color: #fff;
-      color: #0a2342;
-      border: 2px solid #0a2342;
+      background-color: transparent;
+      color: #007bff;
+      border: 2px solid #007bff;
     }
 
     .btn-secondary:hover {
-      background-color: #f0f0f0;
+      background-color: #007bff;
+      color: white;
     }
 
     .hero-right {
       flex: 1;
-      min-width: 300px;
       position: relative;
-      display: flex;
-      justify-content: center;
+      text-align: center;
+      min-width: 300px;
+      margin-top: 40px;
     }
 
     .hero-right img {
-      max-width: 90%;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .badge {
       position: absolute;
-      bottom: 20px;
+      top: 20px;
       right: 20px;
-      background-color: #0a2342;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 30px;
+      background-color: #28a745;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Courses Section */
+    .courses-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 50px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0a2342;
+      margin: 0;
+    }
+
+    .view-all-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .view-all-btn:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 25px;
+    }
+
+    .course-category {
+      background-color: #e3f2fd;
+      color: #1976d2;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .course-price {
+      float: right;
+      font-weight: 700;
+      color: #28a745;
+      font-size: 1.1rem;
+    }
+
+    .course-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0a2342;
+      margin: 15px 0 10px 0;
+    }
+
+    .course-description {
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .course-instructor {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .instructor-info {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-weight: 500;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
-    .badge::before {
-      content: "✔";
-      font-weight: bold;
+    .instructor-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .instructor-name {
+      font-weight: 600;
+      color: #0a2342;
+    }
+
+    .course-stats {
+      display: flex;
+      gap: 15px;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .stat-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Admission Section */
+    .admission-section {
+      background-color: #f8f9fa;
+      padding: 80px 0;
+      margin-top: 80px;
+    }
+
+    .admission-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .admission-image-side {
+      position: relative;
+    }
+
+    .admission-image {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .admission-overlay {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      right: 30px;
+      background: rgba(255,255,255,0.95);
+      padding: 25px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
+
+    .admission-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0a2342;
+      margin-bottom: 10px;
+    }
+
+    .admission-subtitle {
+      color: #6c757d;
+      line-height: 1.6;
+    }
+
+    /* Accordion */
+    .accordion {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 20px 25px;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0a2342;
+      transition: background-color 0.3s;
+    }
+
+    .accordion-header:hover {
+      background-color: #f8f9fa;
+    }
+
+    .accordion-header.active {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .accordion-icon {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s;
+    }
+
+    .accordion-header.active .accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .accordion-content.active {
+      max-height: 500px;
+    }
+
+    .accordion-body {
+      padding: 0 25px 20px 25px;
+      color: #6c757d;
+      line-height: 1.6;
+    }
+
+    .accordion-body ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .accordion-body li {
+      margin-bottom: 5px;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #0a2342;
+      color: white;
+      margin-top: 80px;
+    }
+
+    .footer-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 50px 40px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+      gap: 40px;
+    }
+
+    .footer-brand {
+      max-width: 300px;
+    }
+
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .brand-description {
+      color: #b8c5d1;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background-color: #007bff;
+      transform: translateY(-2px);
+    }
+
+    .footer-section h4 {
       font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
     }
 
-    
-        .courses-section {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #333;
-            margin: 0;
-        }
-
-        .view-all-btn {
-            background-color: #0a2342;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .view-all-btn:hover {
-            background-color: #0d2a4a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(10, 35, 66, 0.3);
-        }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .course-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .course-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background-color: #f0f0f0;
-        }
-
-        .course-content {
-            padding: 24px;
-        }
-
-        .course-category {
-            display: inline-block;
-            background-color: #0a2342;
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-
-        .course-price {
-            float: right;
-            font-size: 24px;
-            font-weight: 700;
-            color: #333;
-            margin-top: -8px;
-        }
-
-        .course-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .course-description {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-
-        .course-instructor {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .instructor-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .instructor-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .instructor-name {
-            font-weight: 500;
-            color: #333;
-            font-size: 14px;
-        }
-
-        .course-stats {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            color: #666;
-            font-size: 14px;
-        }
-
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .stat-icon {
-            width: 16px;
-            height: 16px;
-            opacity: 0.7;
-        }
-
-        /* Admission Requirements */
-         .admission-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 90px 20px;
-        }
-
-        .admission-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-        }
-
-        /* Left Side - Image and Text */
-        .admission-image-side {
-            position: relative;
-        }
-
-        .admission-image {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .admission-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(10, 35, 66, 0.9), transparent);
-            color: white;
-            padding: 40px 30px;
-            border-radius: 0 0 16px 16px;
-        }
-
-        .admission-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .admission-subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
-            line-height: 1.5;
-            max-width: 400px;
-        }
-
-        /* Right Side - Accordion */
-        .admission-accordion-side {
-            padding-top: 20px;
-        }
-
-        .accordion {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-
-        .accordion-item {
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .accordion-item:last-child {
-            border-bottom: none;
-        }
-
-        .accordion-header {
-            width: 100%;
-            padding: 20px 24px;
-            background: white;
-            border: none;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background-color: #f8f9fa;
-        }
-
-        .accordion-header.active {
-            background-color: #0a2342;
-            color: white;
-        }
-
-        .accordion-icon {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-header.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .accordion-content.active {
-            max-height: 200px;
-        }
-
-        .accordion-body {
-            padding: 20px 24px;
-            color: #666;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .accordion-body ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-
-        .accordion-body li {
-            margin-bottom: 8px;
-        }
-
-        /* footer */
-        .footer {
-            background: linear-gradient(135deg, #0a2342 0%, #0d2a4a 100%);
-            color: white;
-            padding-top: 60px;
-        }
-
-        .footer-main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-brand {
-            max-width: 300px;
-        }
-
-        .brand-logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #4ade80;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .brand-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin-bottom: 24px;
-            font-size: 14px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-link:hover {
-            background: #4ade80;
-            transform: translateY(-2px);
-        }
-
-        .footer-section h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #4ade80;
-        }
-
-        .contact-info {
-            list-style: none;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .newsletter {
-            max-width: 280px;
-        }
-
-        .newsletter-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .newsletter-input {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: white;
-            font-size: 14px;
-            backdrop-filter: blur(10px);
-        }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .newsletter-input:focus {
-            outline: none;
-            border-color: #4ade80;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .newsletter-btn {
-            background: #4ade80;
-            color: #0a2342;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            background: #22c55e;
-            transform: translateY(-1px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 24px 0;
-            text-align: center;
-        }
-
-        .footer-bottom-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 24px;
-            list-style: none;
-        }
-
-        .footer-bottom-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #4ade80;
-        }
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #b8c5d1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .contact-info {
+      list-style: none;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: #b8c5d1;
+    }
+
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .newsletter-description {
+      color: #b8c5d1;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .newsletter-btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 25px 0;
+    }
+
+    .footer-bottom-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .copyright {
+      color: #b8c5d1;
+    }
+
+    .footer-bottom-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .footer-bottom-links a {
+      color: #b8c5d1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: white;
+    }
+
     /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column-reverse;
-        text-align: center;
+    @media (max-width: 1024px) {
+      /* Hide desktop navigation */
+      .nav-links,
+      .nav-buttons {
+        display: none;
       }
 
-      .stats {
-        justify-content: center;
-        flex-wrap: wrap;
+      /* Show mobile menu toggle */
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      /* Show mobile navigation elements */
+      .mobile-nav-overlay,
+      .mobile-nav {
+        display: block;
+      }
+
+      /* Adjust navbar padding */
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      /* Hero section adjustments */
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+        margin: 40px auto;
+      }
+
+      .hero-left {
+        margin-bottom: 40px;
+      }
+
+      .hero-left h1 {
+        font-size: 2.5rem;
       }
 
       .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
       }
-        .courses-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-    
-        .section-header {
-            flex-direction: column;
-            gap: 20px;
-            align-items: flex-start;
-        }
-        .admission-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
 
-            .admission-image {
-                height: 300px;
-            }
+      /* Courses section adjustments */
+      .courses-section {
+        padding: 0 20px;
+      }
 
-            .admission-title {
-                font-size: 1.5rem;
-            }
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
 
-            .admission-overlay {
-                padding: 30px 20px;
-            }
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+      }
 
-            .accordion-header {
-                padding: 16px 20px;
-                font-size: 15px;
-            }
+      .section-title {
+        font-size: 2rem;
+      }
 
-            .accordion-body {
-                padding: 16px 20px;
-            }
+      /* Admission section adjustments */
+      .admission-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+      }
+
+      .admission-overlay {
+        position: static;
+        margin-top: 20px;
+        background: white;
+        backdrop-filter: none;
+      }
+
+      /* Footer adjustments */
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 20px 30px;
+        text-align: center;
+      }
+
+      .footer-brand {
+        max-width: none;
+      }
+
+      .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
     }
- @media (max-width: 1024px) {
-            .footer-main {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 30px;
-            }
-            
-            .footer-brand {
-                grid-column: 1 / -1;
-                max-width: 100%;
-            }
-        }
 
-        @media (max-width: 768px) {
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-            
-            .newsletter {
-                grid-column: 1 / -1;
-                max-width: 100%;
-            }
-            
-            .footer-bottom-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
+    @media (max-width: 480px) {
+      .hero-left h1 {
+        font-size: 2rem;
+      }
 
-        @media (max-width: 480px) {
-            .footer-main {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .footer {
-                padding-top: 40px;
-            }
-        }
+      .section-title {
+        font-size: 1.8rem;
+      }
 
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .course-card {
+        margin: 0 10px;
+      }
+
+      .admission-title {
+        font-size: 1.5rem;
+      }
+
+      .mobile-nav {
+        width: 280px;
+      }
+    }

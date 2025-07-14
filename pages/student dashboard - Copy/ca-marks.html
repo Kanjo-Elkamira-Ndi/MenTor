@@ -11,12 +11,9 @@
     <!-- Top Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-left">
-            <div class="logo" style="margin-top: 10px;">
+            <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
                 <span class="logo-text">MenTor</span>
-            </div>
-            <div class="mobile-menu-icon">
-                <i class="fas fa-bars"></i>
             </div>
         </div>
         
@@ -292,81 +289,81 @@
         // Check authentication on page load
         async function checkAuth() {
             try {
-                const response = await fetch("../../auth/check_session.php");
+                const response = await fetch('../../auth/check_session.php');
                 const data = await response.json();
                 
-                if (!data.logged_in || data.user_role !== "student") {
-                    window.location.href = "../login.html";
+                if (!data.logged_in || data.user_role !== 'student') {
+                    window.location.href = '../login.html';
                     return;
                 }
                 
                 // Update user name in UI
-                document.getElementById("userName").textContent = data.user_name;
+                document.getElementById('userName').textContent = data.user_name;
                 
                 // Load CA marks data
                 loadCAMarks();
             } catch (error) {
-                console.error("Auth check error:", error);
-                window.location.href = "../login.html";
+                console.error('Auth check error:', error);
+                window.location.href = '../login.html';
             }
         }
 
         // Load CA marks data
         async function loadCAMarks() {
             try {
-                const response = await fetch("../../api/student/ca_marks.php");
+                const response = await fetch('../../api/student/ca_marks.php');
                 const data = await response.json();
                 
-                document.getElementById("loadingState").style.display = "none";
+                document.getElementById('loadingState').style.display = 'none';
                 
                 if (data.success && data.data.length > 0) {
                     displayCAMarks(data.data, data.summary);
                 } else {
-                    document.getElementById("emptyState").style.display = "block";
+                    document.getElementById('emptyState').style.display = 'block';
                 }
             } catch (error) {
-                console.error("CA marks data error:", error);
-                document.getElementById("loadingState").style.display = "none";
-                document.getElementById("emptyState").style.display = "block";
+                console.error('CA marks data error:', error);
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('emptyState').style.display = 'block';
             }
         }
 
         // Display CA marks and summary
         function displayCAMarks(marks, summary) {
             // Update summary cards
-            document.getElementById("coursesPassed").textContent = summary.courses_passed;
-            document.getElementById("coursesFailed").textContent = summary.courses_failed;
-            document.getElementById("inProgress").textContent = summary.in_progress;
-            document.getElementById("currentGPA").textContent = summary.current_gpa;
+            document.getElementById('coursesPassed').textContent = summary.courses_passed;
+            document.getElementById('coursesFailed').textContent = summary.courses_failed;
+            document.getElementById('inProgress').textContent = summary.in_progress;
+            document.getElementById('currentGPA').textContent = summary.current_gpa;
             
-            document.getElementById("summaryCards").style.display = "grid";
+            document.getElementById('summaryCards').style.display = 'grid';
             
             // Populate table
-            const tableBody = document.getElementById("marksTableBody");
-            tableBody.innerHTML = "";
+            const tableBody = document.getElementById('marksTableBody');
+            tableBody.innerHTML = '';
             
             marks.forEach(mark => {
                 const row = createMarkRow(mark);
                 tableBody.appendChild(row);
             });
             
-            document.getElementById("marksTable").style.display = "block";
+            document.getElementById('marksTable').style.display = 'block';
         }
 
         // Create table row for a mark
         function createMarkRow(mark) {
-            const row = document.createElement("tr");
+            const row = document.createElement('tr');
             
             // Determine score badge class
-            let scoreBadgeClass = "score-poor";
-            if (mark.score >= 80) scoreBadgeClass = "score-excellent";
-            else if (mark.score >= 70) scoreBadgeClass = "score-good";
-            else if (mark.score >= 60) scoreBadgeClass = "score-average";
+            let scoreBadgeClass = 'score-poor';
+            if (mark.score >= 80) scoreBadgeClass = 'score-excellent';
+            else if (mark.score >= 70) scoreBadgeClass = 'score-good';
+            else if (mark.score >= 60) scoreBadgeClass = 'score-average';
             
             // Determine status badge class
-            let statusBadgeClass = "status-progress";
-            if (mark.status === "Passed") statusBadgeClass = "status-passed";
-            else if (mark.status === "Failed") statusBadgeClass = "status-failed";
+            let statusBadgeClass = 'status-progress';
+            if (mark.status === 'Passed') statusBadgeClass = 'status-passed';
+            else if (mark.status === 'Failed') statusBadgeClass = 'status-failed';
             
             row.innerHTML = `
                 <td>
@@ -374,12 +371,12 @@
                 </td>
                 <td>
                     <span class="score-badge ${scoreBadgeClass}">
-                        ${mark.score !== null ? mark.score : "--"}
+                        ${mark.score !== null ? mark.score : '--'}
                     </span>
                 </td>
                 <td>${mark.semester}</td>
                 <td>
-                    <strong>${mark.grade || "Pending"}</strong>
+                    <strong>${mark.grade || 'Pending'}</strong>
                 </td>
                 <td>
                     <span class="status-badge ${statusBadgeClass}">
@@ -394,52 +391,23 @@
         // Logout function
         async function logout() {
             try {
-                const response = await fetch("../../auth/logout.php", {
-                    method: "POST"
+                const response = await fetch('../../auth/logout.php', {
+                    method: 'POST'
                 });
                 const data = await response.json();
                 
                 if (data.success) {
-                    window.location.href = "../login.html";
+                    window.location.href = '../login.html';
                 }
             } catch (error) {
-                console.error("Logout error:", error);
-                window.location.href = "../login.html";
+                console.error('Logout error:', error);
+                window.location.href = '../login.html';
             }
         }
 
         // Initialize page
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             checkAuth();
-
-            // Profile dropdown toggle
-            const profileTrigger = document.querySelector(".profile-trigger");
-            const dropdownMenu = document.querySelector(".dropdown-menu");
-            
-            if (profileTrigger) {
-                profileTrigger.addEventListener("click", function() {
-                    dropdownMenu.classList.toggle("show");
-                });
-            }
-            
-            // Close dropdown when clicking outside
-            document.addEventListener("click", function(event) {
-                if (!event.target.closest(".profile-dropdown")) {
-                    if (dropdownMenu.classList.contains("show")) {
-                        dropdownMenu.classList.remove("show");
-                    }
-                }
-            });
-
-            // Mobile menu toggle
-            const mobileMenuIcon = document.querySelector(".mobile-menu-icon");
-            const sidebar = document.querySelector(".sidebar");
-
-            if (mobileMenuIcon) {
-                mobileMenuIcon.addEventListener("click", function() {
-                    sidebar.classList.toggle("open");
-                });
-            }
         });
     </script>
 </body>
