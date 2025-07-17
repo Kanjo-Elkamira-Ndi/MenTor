@@ -317,27 +317,26 @@
                     <td>${course.type || 'N/A'}</td>
                     <td>
                         <div class="action-buttons">
-                            <button class="btn btn-sm btn-outline-primary" onclick="editCourse(${course.course_id})">
+                        <button class="btn btn-sm btn-outline-primary" onclick="editCourse(${course.id})">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-sm btn-outline-danger" onclick="confirmDeleteCourse(${course.course_id}, '${course.course_name}')">
+                            <button class="btn btn-sm btn-outline-danger" onclick="confirmDeleteCourse(${course.id}, '${course.name}')">
                                 <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+                            </button>                      </div>
                     </td>
                 `;
             });
         }
 
         function showCourseModal(course = {}) {
-            currentCourseId = course.course_id || null;
+            currentCourseId = course.id || null;
             document.getElementById("courseModalTitle").textContent = currentCourseId ? "Edit Course" : "Add Course";
             document.getElementById("courseCode").value = course.course_code || "";
-            document.getElementById("courseName").value = course.course_name || "";
+            document.getElementById("courseName").value = course.name || "";
             document.getElementById("specialtyId").value = course.specialty_id || "";
             document.getElementById("semester").value = course.semester || "";
-            document.getElementById("creditHours").value = course.credit_hours || "";
-            document.getElementById("courseType").value = course.course_type || "";
+            document.getElementById("creditHours").value = course.credits || "";
+            document.getElementById("courseType").value = course.type || "";
             courseModal.show();
         }
 
@@ -405,7 +404,7 @@
 
         async function deleteCourseConfirmed() {
             try {
-                const response = await fetch(`../../api/admin/courses.php?course_id=${currentCourseId}`, {
+                const response = await fetch(`../../api/admin/courses.php?id=${currentCourseId}`, {
                     method: "DELETE"
                 });
                 const data = await response.json();

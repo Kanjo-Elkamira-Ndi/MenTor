@@ -71,12 +71,12 @@ switch ($method) {
     case 'PUT':
         $input = json_decode(file_get_contents('php://input'), true);
         
-        $id = $input['id'] ?? '';
+        $id = $_GET['id'] ?? '';
         $course_code = $input['course_code'] ?? '';
-        $name = $input['course_name'] ?? '';
+        $name = $input['name'] ?? '';
         $description = $input['description'] ?? '';
         $credits = $input['credits'] ?? 0;
-        $type = ['course_type'] ?? '';
+        $type = $input['type'] ?? '';
         $semester = $input['semester'] ?? '';
         $specialty_id = $input['specialty_id'] ?? null;
         
@@ -96,8 +96,7 @@ switch ($method) {
         break;
         
     case 'DELETE':
-        $input = json_decode(file_get_contents('php://input'), true);
-        $id = $input['id'] ?? '';
+        $id = $_GET['id'] ?? '';
         
         if (empty($id)) {
             echo json_encode(['success' => false, 'message' => 'Course ID required']);
