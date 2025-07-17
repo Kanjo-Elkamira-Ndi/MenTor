@@ -105,7 +105,7 @@ Open your web browser and navigate to the URL where you placed the project (e.g.
 For initial testing, you can use the following admin credentials:
 
 *   **Email:** `admin@mentor.edu`
-*   **Password:** `admin` (This password is hashed in the database. You might need to re-hash it or use the `hash_password.php` script to create new admin users.)
+*   **Password:** `password` (This password is hashed in the database. You might need to re-hash it or use the `hash_password.php` script to create new admin users.)
 
 ## 🤝 Contributing
 
