@@ -111,9 +111,6 @@ For initial testing, you can use the following admin credentials:
 
 Contributions are welcome! Please feel free to fork the repository, create pull requests, or open issues for bugs and feature requests.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details. (Note: A `LICENSE.md` file is not included in the provided zip, this is a placeholder.)
 
 ## 📞 Support
 
